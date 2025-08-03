@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Dayana ♡</title>
+
+  <link rel="stylesheet" href="https://use.typekit.net/lyb2crt.css">
+  <link rel="stylesheet" href="dist/output.css" />
+</head>
+
+<body class="relative overflow-x-hidden min-h-screen font-gothic text-gray-800 m-0">
+  
+  <div class="animated-gradient-frame"></div>
+  <div class="controls">
+    <button data-music-toggle class="btn-control btn-animated">
+      <span>Pausar</span>
+    </button>
+    <button data-back-button  class="btn-control btn-animated hidden">
+      <span>← Regresar</span>
+    </button>
+  </div>
+
+  <audio id="myAudio" loop preload="auto">
+    <source src="audio/musica.mp3" type="audio/mpeg" />
+    <source src="audio/musica.ogg" type="audio/ogg" />
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+  <div data-welcome-screen
+       class="fixed inset-0 flex flex-col items-center justify-center
+              z-[1001] transition-opacity duration-500 text-center px-4
+              beautiful-background">
+    <h1 class="text-2xl md:text-3xl text-white font-gothic text-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+      Una pequeña sorpresa para ti...
+    </h1>
+    <button data-start-button class="btn btn-animated text-lg md:text-xl mt-8">
+      <span>Haz Clic Para Iniciar</span>
+    </button>
+  </div>
+
+  <div data-hearts-container   class="fixed inset-0 pointer-events-none z-10"></div>
+  <div data-sparkle-container  class="fixed inset-0 pointer-events-none z-10"></div>
+
+  <main class="w-full min-h-screen flex flex-col items-center justify-center
+               p-5 text-center relative z-20">
+    <header data-header class="transition-all duration-500 mb-4">
+      <div class="relative inline-block">
+        <img src="https://media0.giphy.com/media/ik0ZEJnTxyEle9LdI8/giphy.gif"
+             alt="Hello Kitty"
+             class="max-w-[120px] md:max-w-[160px] h-auto mx-auto block drop-shadow-lg" />
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-1">
+          <svg class="w-6 h-6 text-red-500 transform -rotate-12 animate-pulse"
+               viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clip-rule="evenodd" />
+          </svg>
+          <svg class="w-6 h-6 text-red-500 transform translate-y-[-4px] animate-pulse"
+               style="animation-delay: 0.1s;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clip-rule="evenodd" />
+          </svg>
+          <svg class="w-6 h-6 text-red-500 transform rotate-12 animate-pulse"
+               style="animation-delay: 0.2s;" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clip-rule="evenodd" />
+          </svg>
+        </div>
+      </div>
+      <h1 class="font-chaloops font-semibold text-theme-yellow-pale text-3xl sm:text-4xl lg:text-5xl
+                 mt-4 text-shadow-[2px_2px_5px_rgba(141,118,171,0.7)]">
+        ¡Feliz San Valentín Dayana!
+      </h1>
+    </header>
+
+    <div data-valentine-card
+         class="closed transform-style-3d relative
+                rounded-lg shadow-xl cursor-pointer transition-all duration-1000
+                ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] card-closed">
+
+      <div data-closed-content class="absolute inset-0 w-full h-full flex flex-col
+                                     items-center justify-start p-4 bg-white rounded-lg">
+        <div class="w-full h-40 bg-gray-800 p-1 rounded-md shadow-lg
+                    border-2 border-gray-400 mb-6">
+          <img src="img/sello-samira.png" alt="Sello de Samira"
+               class="w-full h-full object-cover rounded-sm" />
+        </div>
+        <div class="text-center">
+          <div class="text-6xl text-red-500">🎀</div>
+          <div class="font-gothic text-lg font-bold text-red-500 px-4 mt-2">
+            SIEMPRE SERÁS<br />LA BEST ADC ❤️
+          </div>
+        </div>
+      </div>
+      
+      <div data-open-content class="hidden w-full h-full">
+        <div class="relative z-10 w-full h-full p-2 sm:p-5 flex items-center 
+                    justify-center lg:justify-between bg-theme-purple/10 backdrop-blur-sm">
+          
+          <div class="hidden lg:block flex-shrink-0 w-[200px] text-center font-montserrat 
+                      font-bold italic text-2xl text-letter-hotpink">
+            PARA:<br />LA MEJOR AMIGA<br />Y<br />ADC DEL<br />MUNDO :)
+          </div>
+          
+          <div class="flex-grow flex-shrink h-full py-1 sm:py-2 px-2 sm:px-4 text-center">
+            
+            <p class="font-casablanca font-medium text-base sm:text-lg md:text-xl
+                      leading-normal text-letter-pink">
+                Querida Dayana,<br /><br />
+                Muchas gracias por tu amistad, por ser esa amiga increíble y maravillosa
+                que siempre me ha apoyado.<br />
+                Que Dios cuide mucho de ti, te dé la fortaleza para seguir adelante<br />
+                y elimine todas tus preocupaciones. No tengo todas las respuestas,<br />
+                pero sí la certeza de que mereces paz y toda la felicidad del mundo.<br /><br />
+                Deseo que te vaya bien en cada aspecto de tu vida,<br />
+                que cumplas cada uno de tus sueños y metas.<br />
+                Eres la amistad más amable y pura que he conocido. Y siempre tendrás
+                un lugar especial en mi corazón.<br />
+                Seguiré aquí para apoyarte en los pasos que decidas compartir conmigo,<br />
+                celebrando tus avances, acompañando tus pausas y recordándote,<br />
+                cuando lo olvides, lo increíble que eres. Te quiero mucho.
+              </p>
+              <p class="font-casablanca font-medium text-lg sm:text-xl md:text-2xl mt-4
+                        text-letter-pink">
+                Con todo mi cariño y gratitud, Andrés.
+              </p>
+            
+            <button data-coupon-button class="btn btn-animated mt-6">
+              <span>¡CUPÓN!</span>
+            </button>
+          </div>
+          
+          <!-- ================================================================== -->
+          <!-- ▼▼▼ CAMBIO FINAL: Aumentamos el ancho del contenedor de 250px a 300px ▼▼▼ -->
+          <div class="hidden lg:block flex-shrink-0 w-[300px] text-center">
+            <img src="img/hello-kitty-girasol.png" alt="Hello Kitty con Girasol"
+                 class="max-w-full h-auto drop-shadow-xl" />
+          </div>
+          <!-- ▲▲▲ CAMBIO FINAL ▲▲▲ -->
+          <!-- ================================================================== -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div data-coupon-modal
+       class="fixed inset-0 z-[1000] bg-black/60 hidden items-center
+              justify-center p-4 animate-fade-in">
+    <div class="bg-gradient-to-br from-white to-card-bg m-auto p-6 sm:p-8
+                border-4 border-modal-border rounded-xl w-full max-w-md
+                shadow-2xl text-center relative animate-slide-up">
+      <span data-close-modal
+            class="absolute top-2 right-4 text-gray-400 text-4xl font-bold
+                   cursor-pointer transition-colors hover:text-theme-pink">
+        ×
+      </span>
+      <h2 class="font-chaloops text-2xl sm:text-3xl text-theme-pink mt-0">
+        ¡Cupón de Amistad!
+      </h2>
+      <p class="font-gothic text-base sm:text-lg leading-relaxed text-theme-purple">
+        TE QUIERO MUCHO :)
+      </p>
+      <p class="mt-4 bg-pink-100/70 p-4 rounded-lg border-2 border-dashed
+             border-pink-300 font-gothic text-theme-purple text-sm sm:text-base">
+        Este cupón es válido para: <br />
+        Un regalo sorpresa, un abrazo cuando lo necesites, una salida para despejararnos,
+        o lo que se te ocurra jiji :p
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

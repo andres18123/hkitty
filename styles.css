@@ -1,0 +1,204 @@
+/* ========================================================================== 
+   Importaciones Base de Tailwind y Definición de Propiedades
+   ========================================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ========================================================================== 
+   Variables de Espaciado
+   ========================================================================== */
+:root {
+  --frame-offset: 12px;
+  --frame-border-width: 4px;
+  --bow-size: 80px;
+  --controls-gap: 8px;
+}
+
+/* ========================================================================== 
+   Definición de Fuentes Personalizadas 
+   ========================================================================== */
+@font-face {
+  font-family: Chaloops;
+  src: url('../fonts/Chaloops.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Alfarn 2';
+  src: url('../fonts/Alfarn2.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Century Gothic Pro';
+  src: url('../fonts/CenturyGothicPro.ttf') format('truetype');
+}
+
+/* ========================================================================== 
+   Estilos Base de la Aplicación (@layer base) 
+   ========================================================================== */
+@layer base {
+  body {
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    @apply beautiful-background;
+  }
+  
+  .animated-gradient-frame {
+    position: fixed;
+    inset: 0;
+    border-radius: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .animated-gradient-frame::before,
+  .animated-gradient-frame::after {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--frame-border-width));
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--angle), 
+      #7a72ff, #7e85ff, #8497ff, #93acff, #a9bcff, #93acff, #8497ff, #7e85ff, #7a72ff
+    );
+    animation: spin-border 4s linear infinite;
+  }
+
+  .animated-gradient-frame::after {
+    filter: blur(12px);
+    opacity: 0.8;
+  }
+
+  @keyframes spin-border {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
+  }
+  
+  .controls {
+    position: fixed;
+    top: calc(var(--frame-offset) + var(--frame-border-width) + var(--controls-gap));
+    right: calc(var(--frame-offset) + var(--frame-border-width) + var(--controls-gap));
+    z-index: 100;
+    display: flex;
+    gap: 0.75rem;
+  }
+}
+
+/* ========================================================================== 
+   Componentes Personalizados (@layer components) 
+   ========================================================================== */
+@layer components {
+  .beautiful-background {
+    background-color: #c6b8ff;
+    background-image:
+      linear-gradient(to right, rgb(141 118 171 / 8%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(141 118 171 / 8%) 1px, transparent 1px),
+      url('../img/sanrio-pattern.png'),
+      radial-gradient(circle at 30% 30%, #e9d8ff 0%, #d5c6ff 40%, #c6b8ff 100%);
+    background-repeat: repeat, repeat, repeat, no-repeat;
+    background-size: 20px 20px, 20px 20px, 200px 200px, 100% 100%;
+  }
+
+  .btn-base {
+    @apply border-none rounded-full cursor-pointer
+           font-gothic tracking-wide shadow-lg transition-all 
+           duration-300 relative overflow-hidden font-bold
+           hover:-translate-y-1 hover:scale-105;
+  }
+  
+  .btn {
+    @apply btn-base text-lg py-3 px-8 my-6;
+  }
+  
+  .btn-control {
+    @apply btn-base text-sm py-2 px-5;
+  }
+
+  /* ================================================================== */
+  /* ▼▼▼ ARQUITECTURA DE COMPONENTES REUTILIZABLES (Tu idea) ▼▼▼ */
+  
+  /* 1. Componente base para el fondo animado */
+  .animated-periwinkle-bg::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%; 
+    padding-bottom: 200%;
+    border-radius: 50%;
+    background: conic-gradient(
+      from var(--angle),
+      #b4caff, #c1d3ff, #c5dbff, #dbeaff, #f4f7ff, #dbeaff, #c5dbff, #c1d3ff, #b4caff
+    );
+    @apply animate-spin-button;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+
+  /* 2. Aplicación a los botones */
+  .btn-animated {
+    @apply backdrop-blur-sm;
+    background-color: #FFFFCC; /* Amarillo pálido */
+  }
+
+  .btn-animated > span {
+    @apply relative z-10; 
+  }
+
+  /* 3. Aplicación a la tarjeta abierta */
+  [data-open-content] {
+    @apply rounded-lg relative overflow-hidden animated-periwinkle-bg;
+  }
+
+  /* ▲▲▲ ARQUITECTURA DE COMPONENTES REUTILIZABLES ▲▲▲ */
+  /* ================================================================== */
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .card-closed {
+    @apply w-[300px] h-[400px];
+    transform: rotateX(55deg) rotateZ(45deg) scale(0.7);
+  }
+  
+  .card-open {
+    @apply fixed w-[90vw] h-[90vh] max-w-[1100px] max-h-[700px] z-50;
+    inset: 0;
+    margin: auto;
+    transform: rotateX(0) rotateZ(0) scale(1);
+  }
+
+  .bow {
+    position: fixed;
+    width:  var(--bow-size);
+    height: var(--bow-size);
+    background: url('../img/hello-kitty-bow.png') no-repeat center/contain;
+    top:  calc(var(--frame-offset) + (var(--bow-size) / 4));
+    left: calc(var(--frame-offset) + (var(--bow-size) / 4));
+    transform: translate(-50%, -50%) rotate(-45deg);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* ========================================================================== 
+   Reglas de Estado Específicas
+   ========================================================================== */
+.group.open .group-open\:rotate-180 {
+  transform: rotateX(180deg);
+  transition-delay: 0s;
+  z-index: 0;
+}
+.group.open .group-open\:-translate-y-28 {
+  transform: translateY(-110px);
+}
+.group.open .group-open\:opacity-100 {
+  opacity: 1;
+}

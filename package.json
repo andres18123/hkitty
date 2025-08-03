@@ -1,0 +1,29 @@
+{
+  "name": "dkittyv2",
+  "version": "1.0.0",
+  "description": "Tarjeta de San Valentín para Dayana",
+  "main": "script.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles.css -o ./dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./styles.css -o ./dist/output.css --watch",
+    "build": "npm run build:css",
+    "watch": "npm run watch:css",
+    "lint": "stylelint \"**/*.css\"",
+    "lint:fix": "stylelint \"**/*.css\" --fix"
+  },
+  "keywords": [
+    "hello-kitty",
+    "valentine",
+    "tailwind"
+  ],
+  "author": "Andrés",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.14",
+    "stylelint": "^16.23.0",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "tailwindcss": "^4.1.11"
+  }
+}
